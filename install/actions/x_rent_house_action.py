@@ -15,7 +15,7 @@ def install_x_rent_house_action():
     )
 
     x_rent_house_action = ActionWindow(
-        name="x_rent_house_action",
+        name="Casas de renta",
         res_model="x_rent_house"
     )
 
@@ -30,6 +30,6 @@ def uninstall_x_rent_house_action():
     )
 
     action_id = crud_search_action_window(
-        odoo, [["name", "=", "x_rent_house_action"]])[0]
+        odoo, [["name", "=", "Casas de renta"]])[0]
 
     crud_delete_action_window(odoo, action_id)

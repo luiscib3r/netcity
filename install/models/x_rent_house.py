@@ -6,7 +6,7 @@ from core.crud.model import crud_create_model, crud_search_model, crud_delete_mo
 from core.crud.model_field import crud_create_model_field, crud_update_model_field, crud_search_model_fields, crud_get_model_fields
 from core.crud.model_access import crud_create_model_access
 
-from core.models import Model, ModelField, ModelAccess, CreateModelField, CreateModel
+from core.models import Model, ModelField, ModelAccess
 
 
 def install_x_rent_house():
@@ -16,7 +16,7 @@ def install_x_rent_house():
         ODOO_INSTALL_PASSWORD
     )
 
-    x_rent_house_model = CreateModel(
+    x_rent_house_model = Model(
         name="Casa de renta",
         model="x_rent_house",
     )
@@ -32,7 +32,7 @@ def install_x_rent_house():
     crud_update_model_field(odoo, x_name_field.id, x_name_field)
 
     x_rent_house_fields = [
-        CreateModelField(
+        ModelField(
             model_id=model_id,
             name="x_description",
             field_description="Descripción",

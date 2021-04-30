@@ -1,6 +1,6 @@
 from core.odoorpc import OdooRPC
 from typing import List
-from core.models import ModelField, CreateModelField
+from core.models import ModelField
 
 MODEL_NAME = "ir.model.fields"
 
@@ -22,7 +22,7 @@ def crud_search_model_fields(odoo: OdooRPC, domain: List = [], offset: int = 0, 
     return result
 
 
-def crud_create_model_field(odoo: OdooRPC, model_field: CreateModelField) -> int:
+def crud_create_model_field(odoo: OdooRPC, model_field: ModelField) -> int:
     if model_field.field_description == "":
         model_field.field_description = model_field.name
 
