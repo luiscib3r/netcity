@@ -1,0 +1,1 @@
+from .odoorpc_test import OdooRPCTest

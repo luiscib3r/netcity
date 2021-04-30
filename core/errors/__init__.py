@@ -1,0 +1,1 @@
+from core.errors.odoo_exception import OdooException
