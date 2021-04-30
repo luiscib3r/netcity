@@ -53,7 +53,7 @@ class OdooRPC:
                 uid (int): user id or False
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "check_access_rights", operations)
+            return self.call(model, "check_access_rights", operations)
         except Fault as e:
             raise OdooException(e.faultString)
 
@@ -71,7 +71,7 @@ class OdooRPC:
                 A list of ids
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "search", [domain], {
+            return self.call(model, "search", [domain], {
                 "offset": offset,
                 "limit": limit
             })
@@ -93,7 +93,7 @@ class OdooRPC:
                 A list of records in model
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "search_read", [domain], {
+            return self.call(model, "search_read", [domain], {
                 "fields": fields,
                 "offset": offset,
                 "limit": limit
@@ -114,7 +114,7 @@ class OdooRPC:
                 A list of records in model
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "read", [ids], {
+            return self.call(model, "read", [ids], {
                 "fields": fields,
             })
         except Fault as e:
@@ -133,7 +133,7 @@ class OdooRPC:
                 A list of fields in model
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "fields_get", [domain], {
+            return self.call(model, "fields_get", [domain], {
                 "attributes": attributes,
             })
         except Fault as e:
@@ -151,7 +151,7 @@ class OdooRPC:
                 Object id
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "create", [data])
+            return self.call(model, "create", [data])
         except Fault as e:
             raise OdooException(e.faultString)
 
@@ -168,7 +168,7 @@ class OdooRPC:
                 True or False
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "write", [[id], data])
+            return self.call(model, "write", [[id], data])
         except Fault as e:
             raise OdooException(e.faultString)
 
@@ -184,6 +184,21 @@ class OdooRPC:
                 True or False
         """
         try:
-            return self.models.execute_kw(self.db, self.uid, self.password, model, "unlink", [[id]])
+            return self.call(model, "unlink", [[id]])
+        except Fault as e:
+            raise OdooException(e.faultString)
+
+    def call(self, model: str, method: str, kargs: List = [], args: dict = {}):
+        """
+            Call model method
+
+            Parameters:
+                model (str) : Model name
+                method (str) : Method name
+                kargs (List) : Method arguments
+                args (List) : Method arguments
+        """
+        try:
+            return self.models.execute_kw(self.db, self.uid, self.password, model, method, kargs, args)
         except Fault as e:
             raise OdooException(e.faultString)
