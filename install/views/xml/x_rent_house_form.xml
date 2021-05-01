@@ -1,6 +1,15 @@
 <form>
-    <group>
-        <field name="x_name" />
-        <field name="x_description" />
-    </group>
+    <sheet>
+        <group>
+            <field name="x_name" />
+            <field name="x_description" />
+        </group>
+        <group>
+            <field name="x_coordinates" />
+            <field name="x_address" />
+        </group>
+        <group>
+            <field name="x_images" />
+        </group>
+    </sheet>
 </form>

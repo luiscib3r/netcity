@@ -38,6 +38,25 @@ def install_x_rent_house():
             field_description="Descripción",
             ttype="text",
             required=True,
+        ),
+        ModelField(
+            model_id=model_id,
+            name="x_coordinates",
+            field_description="GPS",
+            ttype="char",
+        ),
+        ModelField(
+            model_id=model_id,
+            name="x_address",
+            field_description="Dirección",
+            ttype="text",
+        ),
+        ModelField(
+            model_id=model_id,
+            name="x_images",
+            field_description="Fotos",
+            ttype="many2many",
+            relation="ir.attachment"
         )
     ]
 

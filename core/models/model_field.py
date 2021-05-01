@@ -10,3 +10,4 @@ class ModelField(BaseModel):
     ttype: str
     state: str = "manual"
     required = False
+    relation: Union[str, bool] = False

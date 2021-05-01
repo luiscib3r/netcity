@@ -1,4 +1,4 @@
 <tree>
     <field name="x_name" />
-    <field name="x_description" />
+    <field name="x_coordinates" />
 </tree>
