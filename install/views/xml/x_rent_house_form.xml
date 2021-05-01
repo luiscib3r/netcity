@@ -1,12 +1,14 @@
 <form>
     <sheet>
         <group>
-            <field name="x_name" />
-            <field name="x_description" />
-        </group>
-        <group>
-            <field name="x_coordinates" />
-            <field name="x_address" />
+            <group>
+                <field name="x_name" />
+                <field name="x_description" />
+            </group>
+            <group>
+                <field name="x_coordinates" />
+                <field name="x_address" />
+            </group>
         </group>
         <group>
             <field name="x_images" />
