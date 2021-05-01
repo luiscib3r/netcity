@@ -1,4 +1,4 @@
-from config import ODOO_URL, ODOO_DB, ODOO_USERNAME, ODOO_PASSWORD
+from config import odoo
 
 from core.odoorpc import OdooRPC
 
@@ -11,12 +11,6 @@ from core.utils import load_image
 
 
 def install_x_rent_house_menu():
-    odoo = OdooRPC(
-        ODOO_URL, ODOO_DB,
-        ODOO_USERNAME,
-        ODOO_PASSWORD
-    )
-
     x_rent_house_action = crud_search_action_window(
         odoo, [["name", "=", "Casas de renta"]])[0]
 
@@ -32,12 +26,6 @@ def install_x_rent_house_menu():
 
 
 def uninstall_x_rent_house_menu():
-    odoo = OdooRPC(
-        ODOO_URL, ODOO_DB,
-        ODOO_USERNAME,
-        ODOO_PASSWORD
-    )
-
     menu_id = crud_search_menu(
         odoo, [["name", "=", "NetCity"]])[0]
 

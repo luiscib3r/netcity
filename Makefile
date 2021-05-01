@@ -9,3 +9,7 @@ install:
 .PHONY: uninstall
 uninstall:
 	python app_uninstall.py
+
+.PHONY: run
+run:
+	uvicorn app.main:app --reload
