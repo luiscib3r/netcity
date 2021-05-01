@@ -1,0 +1,6 @@
+<form>
+    <group>
+        <field name="x_name" />
+        <field name="x_description" />
+    </group>
+</form>
