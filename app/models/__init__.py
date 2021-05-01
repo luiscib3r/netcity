@@ -1,0 +1,1 @@
+from app.models.rent_house import RentHouse
