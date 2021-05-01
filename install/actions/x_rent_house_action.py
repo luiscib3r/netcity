@@ -1,4 +1,4 @@
-from config import ODOO_URL, ODOO_DB, ODOO_INSTALL_USERNAME, ODOO_INSTALL_PASSWORD
+from config import ODOO_URL, ODOO_DB, ODOO_USERNAME, ODOO_PASSWORD
 
 from core.odoorpc import OdooRPC
 
@@ -10,8 +10,8 @@ from core.crud.action_window import crud_create_action_window, crud_search_actio
 def install_x_rent_house_action():
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     x_rent_house_action = ActionWindow(
@@ -25,8 +25,8 @@ def install_x_rent_house_action():
 def uninstall_x_rent_house_action():
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     action_id = crud_search_action_window(

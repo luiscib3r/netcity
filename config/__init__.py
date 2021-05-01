@@ -13,7 +13,5 @@ ODOO_TEST_PASSWORD = os.getenv("ODOO_TEST_PASSWORD")
 # Odoo server setup
 ODOO_URL = os.getenv("ODOO_URL")
 ODOO_DB = os.getenv("ODOO_DB")
-
-# For installation
-ODOO_INSTALL_USERNAME = os.getenv("ODOO_INSTALL_USERNAME")
-ODOO_INSTALL_PASSWORD = os.getenv("ODOO_INSTALL_PASSWORD")
+ODOO_USERNAME = os.getenv("ODOO_USERNAME")
+ODOO_PASSWORD = os.getenv("ODOO_PASSWORD")

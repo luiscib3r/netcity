@@ -1,4 +1,4 @@
-from config import ODOO_URL, ODOO_DB, ODOO_INSTALL_USERNAME, ODOO_INSTALL_PASSWORD
+from config import ODOO_URL, ODOO_DB, ODOO_USERNAME, ODOO_PASSWORD
 
 from core.odoorpc import OdooRPC
 
@@ -18,8 +18,8 @@ def install_x_rent_house_view():
 
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     x_rent_house_view_tree = View(
@@ -43,8 +43,8 @@ def install_x_rent_house_view():
 def uninstall_x_rent_house_view():
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     tree_id = crud_search_view(

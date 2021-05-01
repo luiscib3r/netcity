@@ -1,4 +1,4 @@
-from config import ODOO_URL, ODOO_DB, ODOO_INSTALL_USERNAME, ODOO_INSTALL_PASSWORD
+from config import ODOO_URL, ODOO_DB, ODOO_USERNAME, ODOO_PASSWORD
 
 from core.odoorpc import OdooRPC
 
@@ -12,8 +12,8 @@ from core.models import Model, ModelField, ModelAccess
 def install_x_rent_house():
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     x_rent_house_model = Model(
@@ -55,8 +55,8 @@ def install_x_rent_house():
 def uninstall_x_rent_house():
     odoo = OdooRPC(
         ODOO_URL, ODOO_DB,
-        ODOO_INSTALL_USERNAME,
-        ODOO_INSTALL_PASSWORD
+        ODOO_USERNAME,
+        ODOO_PASSWORD
     )
 
     model_id = crud_search_model(odoo, [["model", "=", "x_rent_house"]])[0]
