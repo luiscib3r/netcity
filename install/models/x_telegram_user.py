@@ -32,8 +32,9 @@ def install_x_telegram_user():
             model_id=model_id,
             name="x_user_id",
             field_description="ID",
-            ttype="integer",
+            ttype="char",
             readonly=True,
+            index=True,
         ),
         ModelField(
             model_id=model_id,

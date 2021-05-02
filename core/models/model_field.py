@@ -12,3 +12,4 @@ class ModelField(BaseModel):
     required = False
     relation: Union[str, bool] = False
     readonly: bool = False
+    index: bool = False

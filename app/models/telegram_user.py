@@ -3,7 +3,7 @@ from typing import Union
 
 
 class TelegramUser(BaseModel):
-    x_user_id: int = Field(alias="id")
+    x_user_id: str = Field(alias="id")
     x_name: str = Field(alias="first_name")
     x_last_name: Union[str, bool] = Field(False, alias="last_name")
     x_username: Union[str, bool] = Field(False, alias="username")

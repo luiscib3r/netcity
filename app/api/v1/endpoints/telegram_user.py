@@ -37,6 +37,10 @@ async def create_telegram_user(
     user: TelegramUser,
     api_key: APIKey = Depends(get_api_key),
 ):
-    id = crud_create_telegram_user(odoo, user)
-
-    return id
+    try:
+        return crud_create_telegram_user(odoo, user)
+    except OdooException as e:
+        raise HTTPException(
+            status_code=HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=e.message,
+        )
