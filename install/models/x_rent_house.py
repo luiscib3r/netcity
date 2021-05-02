@@ -17,7 +17,8 @@ def install_x_rent_house():
 
     model_id = crud_create_model(odoo, x_rent_house_model)
 
-    x_name_field = crud_get_model_fields(odoo, [["name", "=", "x_name"]])[0]
+    x_name_field = crud_get_model_fields(
+        odoo, [["name", "=", "x_name"], ["model_id", "=", model_id]])[0]
 
     x_name_field.field_description = "Nombre"
     x_name_field.required = True

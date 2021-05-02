@@ -14,12 +14,12 @@ def install_x_rent_house_menu():
     x_rent_house_action = crud_search_action_window(
         odoo, [["name", "=", "Casas de renta"]])[0]
 
-    image = load_image("assets/logo_fastapi.png")
+    x_net_city_menu = crud_search_menu(odoo, [["name", "=", "NetCity"]])[0]
 
     x_rent_house_menu = Menu(
-        name="NetCity",
+        name="Casas de renta",
         action=f"ir.actions.act_window,{x_rent_house_action}",
-        web_icon_data=image
+        parent_id=x_net_city_menu,
     )
 
     crud_create_menu(odoo, x_rent_house_menu)
@@ -27,6 +27,6 @@ def install_x_rent_house_menu():
 
 def uninstall_x_rent_house_menu():
     menu_id = crud_search_menu(
-        odoo, [["name", "=", "NetCity"]])[0]
+        odoo, [["name", "=", "Casas de renta"]])[0]
 
     crud_delete_menu(odoo, menu_id)
