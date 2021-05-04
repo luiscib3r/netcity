@@ -1,0 +1,16 @@
+<form>
+    <sheet>
+        <group>
+            <group>
+                <field name="x_name" />
+                <field name="x_version" />
+            </group>
+            <group>
+                <field name="x_description" />
+            </group>
+        </group>
+        <group>
+            <field name="x_apps" />
+        </group>
+    </sheet>
+</form>
