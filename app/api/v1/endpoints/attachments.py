@@ -1,6 +1,6 @@
 from config import odoo
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, UploadFile, File
 from fastapi.responses import FileResponse
 from fastapi.security.api_key import APIKey
 from app.auth.api_key import get_api_key
@@ -50,8 +50,29 @@ async def create_attachment(
         )
 
 
+@router.post("/upload")
+async def upload_attachment(
+    file: UploadFile = File(...),
+    api_key: APIKey = Depends(get_api_key),
+):
+    try:
+        data = await file.read()
+
+        file_content = base64.b64encode(data)
+
+        return crud_create_attachment(odoo, Attachment(
+            name=file.filename,
+            datas=file_content
+        ))
+    except OdooException as e:
+        raise HTTPException(
+            status_code=HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=e.message,
+        )
+
+
 @router.get("/download")
-def download_attachment(
+async def download_attachment(
     attachment_id: int,
     api_key: APIKey = Depends(get_api_key),
 ):
