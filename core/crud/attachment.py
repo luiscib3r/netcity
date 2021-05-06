@@ -8,8 +8,6 @@ MODEL_NAME = "ir.attachment"
 def crud_get_attachment(odoo: OdooRPC, domain: List = [], offset: int = 0, limit: int = 20) -> List[Attachment]:
     attachments: List[Attachment] = []
 
-    print(domain)
-
     result = odoo.search_read(MODEL_NAME, domain, ["name", "type", "datas", "url", "mimetype"], offset, limit)
 
     for row in result:
