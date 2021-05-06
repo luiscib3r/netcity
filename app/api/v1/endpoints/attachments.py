@@ -74,7 +74,6 @@ async def upload_attachment(
 @router.get("/download")
 async def download_attachment(
     attachment_id: int,
-    api_key: APIKey = Depends(get_api_key),
 ):
     try:
         files = crud_get_attachment(odoo, [["id", "=", attachment_id]])

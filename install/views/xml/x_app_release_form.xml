@@ -6,6 +6,7 @@
                 <field name="x_version" />
             </group>
             <group>
+                <field name="create_date" />
                 <field name="x_description" />
             </group>
         </group>
