@@ -8,7 +8,9 @@ MODEL_NAME = "ir.attachment"
 def crud_get_attachment(odoo: OdooRPC, domain: List = [], offset: int = 0, limit: int = 20) -> List[Attachment]:
     attachments: List[Attachment] = []
 
-    result = odoo.search_read(MODEL_NAME, domain, [], offset, limit)
+    print(domain)
+
+    result = odoo.search_read(MODEL_NAME, domain, ["name", "type", "datas", "url", "mimetype"], offset, limit)
 
     for row in result:
         attachments.append(Attachment(**row))
@@ -18,6 +20,8 @@ def crud_get_attachment(odoo: OdooRPC, domain: List = [], offset: int = 0, limit
 
 def crud_search_attachment(odoo: OdooRPC, domain: List = [], offset: int = 0, limit: int = 20) -> List[int]:
     result = odoo.search(MODEL_NAME, domain, offset, limit)
+
+    print(result)
 
     return result
 

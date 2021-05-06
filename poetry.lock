@@ -1,4 +1,12 @@
 [[package]]
+name = "aiofiles"
+version = "0.6.0"
+description = "File support for asyncio."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "click"
 version = "7.1.2"
 description = "Composable command line interface toolkit"
@@ -172,9 +180,13 @@ python-versions = ">=3.6.1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d21a98a84bef29b6addf50702e754ac0a14e0d8e8249a947e170aefd59fbe7eb"
+content-hash = "5dc817bd3dc4619b8db25d11138ef1fc7523c418133e6576df062ed3b6436be8"
 
 [metadata.files]
+aiofiles = [
+    {file = "aiofiles-0.6.0-py3-none-any.whl", hash = "sha256:bd3019af67f83b739f8e4053c6c0512a7f545b9a8d91aaeab55e6e0f9d123c27"},
+    {file = "aiofiles-0.6.0.tar.gz", hash = "sha256:e0281b157d3d5d59d803e3f4557dcc9a3dff28a4dd4829a9ff478adae50ca092"},
+]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},

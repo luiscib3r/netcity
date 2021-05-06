@@ -1,16 +1,18 @@
 from config import odoo
 
 from fastapi import APIRouter, Depends, Query
+from fastapi.responses import FileResponse
 from fastapi.security.api_key import APIKey
 from app.auth.api_key import get_api_key
 from fastapi.exceptions import HTTPException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
 from core.models import Attachment
-from core.crud.attachment import crud_get_attachment, crud_create_attachment
+from core.crud.attachment import crud_create_attachment, crud_get_attachment
 from core.errors.odoo_exception import OdooException
 
 from typing import List
+import base64
 
 
 router = APIRouter(prefix="/attachments", tags=["Attachments"])
@@ -41,6 +43,31 @@ async def create_attachment(
 ):
     try:
         return crud_create_attachment(odoo, attachment)
+    except OdooException as e:
+        raise HTTPException(
+            status_code=HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=e.message,
+        )
+
+
+@router.get("/download")
+def download_attachment(
+    attachment_id: int,
+    api_key: APIKey = Depends(get_api_key),
+):
+    try:
+        files = crud_get_attachment(odoo, [["id", "=", attachment_id]])
+
+        if len(files) == 0 or not files[0].datas:
+            raise HTTPException(status_code=404, detail="Item not found")
+
+        file_content = base64.b64decode(files[0].datas)
+
+        with open(f"/tmp/{files[0].name}", "wb+") as f:
+            print(f"/tmp/{files[0].name}")
+            f.write(file_content)
+
+        return FileResponse(f"/tmp/{files[0].name}")
     except OdooException as e:
         raise HTTPException(
             status_code=HTTP_422_UNPROCESSABLE_ENTITY,
