@@ -87,7 +87,7 @@ async def download_attachment(
             print(f"/tmp/{files[0].name}")
             f.write(file_content)
 
-        return FileResponse(f"/tmp/{files[0].name}")
+        return FileResponse(f"/tmp/{files[0].name}", filename=files[0].name)
     except OdooException as e:
         raise HTTPException(
             status_code=HTTP_422_UNPROCESSABLE_ENTITY,

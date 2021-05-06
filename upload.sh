@@ -19,6 +19,6 @@ curl -X 'POST' \
   "version": "1.0.6",
   "description": "",
   "apps": [
-    '"$ID"' 
+    '"$ID"'
   ]
 }'
